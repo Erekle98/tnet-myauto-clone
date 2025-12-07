@@ -10,7 +10,7 @@ export interface FiltersCardProps {
     priceTo: string | null;
     period: "1h" | "2h" | "3h" | "1d" | "2d" | "3d" | "1w" | "2w" | "3w" | null;
     sortOrder: 1 | 2 | 3 | 4 | 5 | 6 | null;
-    page: number | null;
+    page: number;
   };
   setFilters: React.Dispatch<React.SetStateAction<FiltersCardProps["filters"]>>;
 }

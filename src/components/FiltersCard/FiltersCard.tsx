@@ -3,10 +3,7 @@ import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { FiltersCardProps } from "../../interfaces/FiltersCardComponentsProps";
-import {
-  DEAL_TYPES,
-  TRANSPORT_TYPES,
-} from "../../constants/filtersCardConstants";
+import { DEAL_TYPES, TRANSPORT_TYPES } from "../../constants/filtersConstants";
 import { updateFilterState } from "../../helpers/filterHelpers";
 
 import TransportTypeButton from "./TransportTypeButton/TransportTypeButton";
@@ -25,7 +22,7 @@ const FiltersCard = ({ filters, setFilters }: FiltersCardProps) => {
   const [currency, setCurrency] = useState<"GEL" | "USD">("GEL");
 
   return (
-    <div className='w-[250px] mr-[20px] rounded-t-[10px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08),0_1px_3px_rgba(0,0,0,0.04)] border-gray-200 border-[1px]'>
+    <div className='hidden sm:block w-[250px] mr-[20px] rounded-t-[10px] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08),0_1px_3px_rgba(0,0,0,0.04)] border-gray-200 border-[1px]'>
       <div className='flex items-center'>
         {TRANSPORT_TYPES.map((transportType) => (
           <TransportTypeButton

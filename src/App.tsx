@@ -15,8 +15,10 @@ function App() {
     priceTo: null,
     period: null,
     sortOrder: null,
-    page: null,
+    page: 1,
   });
+
+  console.log(filters);
 
   useEffect(() => {
     document.title = "იყიდება ავტომობილები";
@@ -29,10 +31,9 @@ function App() {
         <Breadcrumbs />
         <div className='mt-[20px] flex justify-between'>
           <FiltersCard filters={filters} setFilters={setFilters} />
-          <ProductsView />
+          <ProductsView filters={filters} setFilters={setFilters} />
         </div>
       </div>
-      <div className='w-full h-[calc(1000vh-80px)]'></div>
     </>
   );
 }
