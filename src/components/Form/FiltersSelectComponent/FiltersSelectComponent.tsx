@@ -3,7 +3,12 @@ import Select from "react-select";
 
 interface SelectComponentProps {
   label?: string;
-  options: { value: any; label: any }[];
+  options:
+    | { value: any; label: any }[]
+    | {
+        label: string;
+        options: { value: number; label: string; man_id: string }[];
+      }[];
   isMulti?: boolean;
   placeholder?: string;
   value: any;
@@ -40,6 +45,7 @@ const FiltersSelectComponent = ({
         isLoading={isLoading}
         isClearable={isClearable}
         isSearchable={isSearchable}
+        closeMenuOnSelect={!isMulti}
         components={{
           IndicatorSeparator: () => null,
         }}
@@ -52,7 +58,6 @@ const FiltersSelectComponent = ({
             "&:hover": {
               border: "1px solid #E2E5EB",
             },
-            height: "36px",
             minHeight: "36px",
             fontSize: "13px",
             backgroundColor: "#fff",

@@ -5,7 +5,7 @@ const SmallInput = ({
   onChange,
   placeholder,
 }: {
-  value: string;
+  value: string | number;
   onChange: (value: string) => void;
   placeholder: string;
 }) => {

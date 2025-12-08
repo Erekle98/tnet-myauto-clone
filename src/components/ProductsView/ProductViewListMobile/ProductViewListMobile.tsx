@@ -1,67 +1,36 @@
 import React from "react";
-
+import { Product } from "../../../interfaces/Product";
 import ProductViewListMobileItem from "./ProductViewListMobileItem";
 
-const ProductViewListMobile = () => {
+interface ProductViewListMobileProps {
+  products: Product[];
+}
+
+const ProductViewListMobile = ({ products }: ProductViewListMobileProps) => {
   return (
-    <div className='flex flex-col sm:hidden'>
-      <ProductViewListMobileItem
-        isCustomsPassed={true}
-        isVipPlus={false}
-        isVip={true}
-        isColorCard={false}
-        isAdditionalInfo={true}
-        location={"Tbilisi"}
-        engine={"1.5 ბენზინი"}
-        gear={"ავტომატიკა"}
-        milage={"10000"}
-        wheel={"საჭე მარცხნივ"}
-        views={1000}
-        time={"2020"}
-        customsPrice={0}
-        price={108122}
-        year={2020}
-        name='LAND ROVER Range Rover Evoque'
-        image='/car.png'
-      />
-      <ProductViewListMobileItem
-        isCustomsPassed={false}
-        customsPrice={1400}
-        isVipPlus={true}
-        isVip={false}
-        isColorCard={false}
-        isAdditionalInfo={false}
-        location={"Tbilisi"}
-        engine={"1.5 ბენზინი"}
-        gear={"ავტომატიკა"}
-        milage={"10000"}
-        wheel={"საჭე მარცხნივ"}
-        views={1000}
-        time={"2020"}
-        price={108122}
-        year={2020}
-        name='LAND ROVER Range Rover Evoque'
-        image='/car.png'
-      />
-      <ProductViewListMobileItem
-        isCustomsPassed={true}
-        customsPrice={0}
-        isVipPlus={true}
-        isVip={false}
-        isColorCard={true}
-        isAdditionalInfo={false}
-        location={"Tbilisi"}
-        engine={"1.5 ბენზინი"}
-        gear={"ავტომატიკა"}
-        milage={"10000"}
-        wheel={"საჭე მარცხნივ"}
-        views={1000}
-        time={"2020"}
-        price={108122}
-        year={2020}
-        name='LAND ROVER Range Rover Evoque'
-        image='/car.png'
-      />
+    <div className='flex flex-col sm:hidden gap-[16px]'>
+      {products.map((product) => (
+        <ProductViewListMobileItem
+          key={product.car_id}
+          isCustomsPassed={product.customs_passed}
+          isVipPlus={false}
+          isVip={false}
+          isColorCard={false}
+          isAdditionalInfo={false}
+          location={"Tbilisi"}
+          engine={`${(product.engine_volume / 1000).toFixed(1)}`}
+          gear={product.gear_type_id === 1 ? "მექანიკა" : "ავტომატიკა"}
+          milage={`${product.car_run_km} კმ`}
+          wheel={product.right_wheel ? "მარჯვენა" : "მარცხენა"}
+          views={product.views}
+          time={product.order_date.split(" ")[0]}
+          customsPrice={0}
+          price={product.price}
+          year={product.prod_year}
+          name={`${product.man_id} ${product.model_id}`}
+          image={`https://static.my.ge/myauto/photos/${product.photo}/thumbs/${product.daily_views?.product_id}_1.jpg?v=${product.photo_ver}`}
+        />
+      ))}
     </div>
   );
 };

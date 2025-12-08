@@ -24,6 +24,7 @@ export interface ProductCardProps {
   isColorCard?: boolean;
   isAdditionalInfo?: boolean;
   isDealer?: boolean;
+  dealerName?: string;
   location?: string;
   name?: string;
   year?: number;
@@ -47,6 +48,7 @@ const ProductsViewListItem = ({
   isColorCard,
   isAdditionalInfo,
   isDealer,
+  dealerName,
   location,
   name,
   year,
@@ -67,11 +69,14 @@ const ProductsViewListItem = ({
       } rounded-[14px]`}
     >
       <div className='flex gap-[16px] p-[16px]'>
-        <img
-          className='w-[180px] h-[130px] object-cover rounded-[10px]'
-          src={image}
-          alt='img'
-        />
+        <div className='w-[180px] h-[130px]'>
+          <img
+            className='w-full h-full object-cover rounded-[10px]'
+            src={image}
+            alt='img'
+            loading='lazy'
+          />
+        </div>
         <div className='w-full'>
           <div className='w-full flex items-start justify-between'>
             <div className='flex items-center gap-[8px] pb-[16px]'>
@@ -92,7 +97,7 @@ const ProductsViewListItem = ({
                   </div>
                 ) : (
                   <p className='text-red800 text-[11px] font-[500]'>
-                    განბაჟება {customsPrice?.toLocaleString()} ₾
+                    განბაჟება {customsPrice?.toString()} ₾
                   </p>
                 ))}
               <div className='flex items-center gap-[8px]'>
@@ -125,7 +130,7 @@ const ProductsViewListItem = ({
               </div>
             </div>
             <div className='flex items-center gap-[4px] font-[500]'>
-              <p className='text-[20px]'>{price?.toLocaleString()}</p>
+              <p className='text-[20px]'>{price?.toString()}</p>
               <span className='text-[16px] bg-gray50 rounded-full w-[24px] h-[24px] flex items-center justify-center'>
                 ₾
               </span>
@@ -192,7 +197,7 @@ const ProductsViewListItem = ({
                   className='w-[40px] h-[40px] rounded-full'
                 />
                 <div>
-                  <p className='text-[12px] font-[500]'>MC TRANS</p>
+                  <p className='text-[12px] font-[500]'>{dealerName}</p>
                   <div className='flex items-center gap-[8px] text-[11px] text-black600'>
                     <UnionIcon />
                     <p>ყველა განცხადება (26)</p>

@@ -5,11 +5,16 @@ import { FiltersCardProps } from "../../../interfaces/FiltersCardComponentsProps
 
 import { PERIODS, SORTS } from "../../../constants/filtersConstants";
 import { updateFilterState } from "../../../helpers/filterHelpers";
+import { Meta } from "../../../interfaces/Product";
 
-const ProductsViewHeader = ({ filters, setFilters }: FiltersCardProps) => {
+const ProductsViewHeader = ({
+  meta,
+  filters,
+  setFilters,
+}: FiltersCardProps & { meta: Meta | undefined }) => {
   return (
     <div className='hidden sm:flex w-full items-center justify-between'>
-      <p className='text-[16px] text-black800'>176047 განცხადება</p>
+      <p className='text-[16px] text-black800'>{meta?.total} განცხადება</p>
       <div className='flex items-center gap-[8px]'>
         <SortSelectComponent
           options={PERIODS.map((period) => ({

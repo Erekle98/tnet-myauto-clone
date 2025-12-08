@@ -83,7 +83,13 @@ const ProductViewListMobileItem = ({
         </div>
 
         <div className='relative w-full h-[200px] rounded-[12px] overflow-hidden mb-[16px]'>
-          <img className='w-full h-full object-cover' src={image} alt='img' />
+          <img
+            className='w-full h-full object-cover'
+            src={image}
+            alt='img'
+            loading='lazy'
+          />
+
           <div className='absolute top-[12px] right-[12px] z-10 text-white drop-shadow-md'>
             <FavouriteIcon color='white' />
           </div>

@@ -20,6 +20,7 @@ const SortSelectComponent = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      isClearable
       components={{
         IndicatorSeparator: () => null,
       }}
