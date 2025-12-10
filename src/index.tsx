@@ -8,7 +8,6 @@ import "./styles/index.css";
 import App from "./App";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 moment.locale("ka");
 
@@ -23,7 +22,6 @@ root.render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 );
